@@ -1,5 +1,5 @@
 # AoC Day 2
-# @author: Friedrich Leez
+# @author: needs recreation!!!
 
 def is_safe_report(report):
     is_increasing = all(report[i] < report[i+1] for i in range(len(report) - 1))
@@ -9,8 +9,8 @@ def is_safe_report(report):
 
     return (is_increasing or is_decreasing) and valid_differences
 
-def count_safe_reports_with_dampener(file_path):
-    with open(file_path, 'r') as file:
+def count_safe_reports_with_dampener():
+    with open("2024/02/file.txt", 'r') as file:
         reports = [list(map(int, line.split())) for line in file.readlines()]
 
     safe_count = 0
@@ -28,7 +28,5 @@ def count_safe_reports_with_dampener(file_path):
 
     return safe_count
 
-file_path = 'file.txt'
-
-result = count_safe_reports_with_dampener(file_path)
+result = count_safe_reports_with_dampener()
 print(f"Number of safe reports (with dampener): {result}")

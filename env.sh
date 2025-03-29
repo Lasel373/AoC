@@ -59,7 +59,7 @@ create_day_folder() {
 
     # If SESSION is provided, use curl to fetch the input; otherwise, create an empty file.txt
     if [ -n "$SESSION" ]; then
-        curl -s -b "session=$SESSION" "$input_url" > "$target_folder/file.txt"
+        curl -s -b "session=$SESSION" "$input_url" | sed -z '$s/\n$//' > "$target_folder/file.txt"
         echo "Downloaded puzzle input from $input_url into $target_folder/file.txt"
     else
         touch "$target_folder/file.txt"
